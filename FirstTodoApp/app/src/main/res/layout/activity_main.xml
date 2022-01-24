@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8C6AC6"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back_shape"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:textColor="@color/white"/>
+    <include layout="@layout/todo_item"></include>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="1"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/addTitleEditView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="text"
+            android:background="#fff"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/submit_btn"
+            android:maxWidth="11dp"
+            android:maxHeight="11dp"
+            android:layout_margin="7dp"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/block_submit_btn"/>
+
+    </LinearLayout>
+
+</LinearLayout>
