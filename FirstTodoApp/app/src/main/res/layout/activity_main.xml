@@ -22,13 +22,18 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:layout_weight="1" />
+    <TextView
+        android:id="@+id/textText"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:weightSum="1"
         android:background="@color/white"
         android:orientation="horizontal">
-
         <EditText
             android:id="@+id/addTitleEditView"
             android:layout_width="match_parent"
