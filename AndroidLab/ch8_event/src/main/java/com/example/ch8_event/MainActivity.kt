@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
             Log.d("info","real ${SystemClock.elapsedRealtime()}")
             Log.d("info","pasue $pauseTime")
             Log.d("info", "--------------------stop-----------------")
-            binding.chronometer.stop()
 
+            binding.chronometer.stop()
             binding.stopBtn.isEnabled = false
             binding.resetBtn.isEnabled = true
             binding.startBtn.isEnabled = true

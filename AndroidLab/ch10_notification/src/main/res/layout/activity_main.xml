@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:useDefaultMargins="false">
+
+        <TextView
+            android:layout_columnSpan="3"
+            android:text="Toast"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/toast_btn"
+            android:text="toast" />
+
+        <Button
+            android:id="@+id/toast_callback_btn"
+            android:text="toast_callback" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_columnSpan="3"
+            android:background="#A5A0A0" />
+
+        <TextView
+            android:layout_columnSpan="3"
+            android:text="date/time picker"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/date_picker_btn"
+            android:text="DatePicker" />
+
+        <Button
+            android:id="@+id/time_picker_btn"
+            android:text="TimePicker" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_columnSpan="3"
+            android:background="#A5A0A0" />
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
