@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="unableBtn">
+        <item name="android:backgroundTint">@color/light_gray</item>
+    </style>
+    <style name="ableBtn">
+        <item name="android:backgroundTint">@color/purple_500</item>
+    </style>
+</resources>
