@@ -3,9 +3,11 @@ package com.example.ch10_notification
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.DialogInterface
-import android.os.Build
-import android.os.Bundle
+import android.media.RingtoneManager
+import android.net.Uri
+import android.os.*
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
@@ -92,8 +94,34 @@ class MainActivity : AppCompatActivity() {
             }.setCanceledOnTouchOutside(false)
         }
 
+        //음원 URI 가져오기
+        val notification: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        //URI로 음원 가져오기
+        val ringtone = RingtoneManager.getRingtone(applicationContext, notification)
+        //자체 음원 재생
+        // val player: MediaPlayer = MediaPlayer.create(this, R.raw.fallbackring)
+
+        val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager =
+                this.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator;
+        } else {
+            getSystemService(VIBRATOR_SERVICE) as Vibrator
+        }
         binding.level2.setOnClickListener {
             levelTwo()
+
+            //진동 울리기
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(
+                    VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE)
+                )
+            } else {
+                vibrator.vibrate(500)
+            }
+
+            //소리
+            ringtone.play()
         }
         binding.level3.setOnClickListener {
             levelThree()
@@ -272,10 +300,10 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if (p1 == DialogInterface.BUTTON_POSITIVE) {
                     val str = one_binding.inputLine.text
-                    var str_data:String = str.toString().replace(" ","")
-                    if(str_data.equals("아몬드봉봉")){
+                    var str_data: String = str.toString().replace(" ", "")
+                    if (str_data.equals("아몬드봉봉")) {
                         finalCorrect()
-                    }else{
+                    } else {
                         pickWrong(5)
                     }
                 }
@@ -291,7 +319,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun finalCorrect() {
-        AlertDialog.Builder(this).run{
+        AlertDialog.Builder(this).run {
             setTitle("모든 레벨을 완료하였습니다!")
             setMessage("나를 정말 잘 아는구나 고마워")
             setNegativeButton("안녕~", null)
