@@ -9,10 +9,12 @@
         <entry key="ch10_notification/src/main/res/drawable/ic_launcher_background.xml" value="0.225" />
         <entry key="ch10_notification/src/main/res/layout/activity_main.xml" value="0.3151041666666667" />
         <entry key="ch10_notification/src/main/res/layout/activity_one.xml" value="0.3151041666666667" />
+        <entry key="ch11_jetpack/src/main/res/layout/activity_main.xml" value="0.1273457845052083" />
         <entry key="ch11_jetpack/src/main/res/layout/fragment_one.xml" value="0.1" />
         <entry key="ch11_jetpack/src/main/res/layout/fragment_three.xml" value="0.3098958333333333" />
         <entry key="ch11_jetpack/src/main/res/layout/fragment_two.xml" value="0.3098958333333333" />
         <entry key="ch11_jetpack/src/main/res/layout/item_recyclerview.xml" value="0.3098958333333333" />
+        <entry key="ch11_jetpack/src/main/res/menu/menu_main.xml" value="0.3098958333333333" />
         <entry key="ch6_view2/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="ch7_layout/src/main/res/layout/activity_main.xml" value="0.38958333333333334" />
         <entry key="ch8_event/src/main/res/drawable/round_button.xml" value="0.29" />
