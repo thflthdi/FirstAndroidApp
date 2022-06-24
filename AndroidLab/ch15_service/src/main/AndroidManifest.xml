@@ -21,4 +21,7 @@
 
     </application>
 
+    <queries>
+        <package android:name="com.example.ch15_outer" />
+    </queries>
 </manifest>
