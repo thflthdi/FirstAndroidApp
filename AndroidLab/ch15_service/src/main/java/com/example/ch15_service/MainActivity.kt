@@ -1,6 +1,8 @@
 package com.example.ch15_service
 
 import android.annotation.TargetApi
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -22,7 +24,8 @@ class MainActivity : AppCompatActivity() {
     var messengerJob: Job? = null
 
     //aidl...........
-
+    var aidlService: MyAidlInterface? = null
+    var aidlJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -152,20 +155,54 @@ class MainActivity : AppCompatActivity() {
     }
 
     //aidl connection .......................
+    val aidlConnection: ServiceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            aidlService = MyAidlInterface.Stub.asInterface(service)
+            aidlService!!.start()
+            binding.aidlProgress.max = aidlService!!.maxDuration
+            val backgroundScope = CoroutineScope(Dispatchers.Default + Job())
+            aidlJob = backgroundScope.launch {
+                while (binding.aidlProgress.progress < binding.aidlProgress.max) {
+                    delay(1000)
+                    binding.aidlProgress.incrementProgressBy(1000)
+                }
+            }
+            connectionMode = "aidl"
+            changeViewEnable()
+        }
 
+        override fun onServiceDisconnected(p0: ComponentName?) {
+            aidlService = null
+        }
+    }
 
     private fun onCreateAIDLService() {
-
+        binding.aidlPlay.setOnClickListener {
+            val intent = Intent("ACTION_SERVICE_AIDL")
+            intent.setPackage("com.example.ch15_outer")
+            bindService(intent, aidlConnection, Context.BIND_AUTO_CREATE)
+        }
+        binding.aidlStop.setOnClickListener {
+            aidlService!!.stop()
+            unbindService(aidlConnection)
+            aidlJob?.cancel()
+            connectionMode = "none"
+            changeViewEnable()
+        }
     }
 
     private fun onStopAIDLService() {
-
+        unbindService(aidlConnection)
     }
 
     //JobScheduler
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun onCreateJobScheduler() {
-
+        var jobScheduler: JobScheduler? = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
+        val builder = JobInfo.Builder(1, ComponentName(this, MyJobService::class.java))
+        builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+        val jobInfo = builder.build()
+        jobScheduler!!.schedule(jobInfo)
     }
 
 }
