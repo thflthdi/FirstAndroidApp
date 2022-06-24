@@ -10,6 +10,7 @@ import android.content.ServiceConnection
 import android.os.*
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ch15_outer.MyAidlInterface
 import com.example.ch15_service.databinding.ActivityMainBinding
 import kotlinx.coroutines.*
 
@@ -156,9 +157,13 @@ class MainActivity : AppCompatActivity() {
 
     //aidl connection .......................
     val aidlConnection: ServiceConnection = object : ServiceConnection {
-        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+        override fun onServiceConnected(name: ComponentName, service: IBinder) {
             aidlService = MyAidlInterface.Stub.asInterface(service)
-            aidlService!!.start()
+            try{
+                aidlService!!.start()
+            }catch (e:Exception){
+                Log.d("aidl", "------------------errer------------------------- $e")
+            }
             binding.aidlProgress.max = aidlService!!.maxDuration
             val backgroundScope = CoroutineScope(Dispatchers.Default + Job())
             aidlJob = backgroundScope.launch {
