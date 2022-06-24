@@ -1,4 +1,4 @@
-package com.example.ch15_service
+package com.example.ch15_outer
 
 import android.app.Service
 import android.content.Context
