@@ -17,11 +17,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val requestLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()) //contract
+            ActivityResultContracts.StartActivityForResult()
+        ) //contract
         //callback
         {
             it.data!!.getStringExtra("result")?.let {
@@ -45,9 +46,9 @@ class MainActivity : AppCompatActivity() {
 
         // 리싸이클뷰 어뎁터, 레이아웃 메니저, 데코레이터 설정
         val layoutManager = LinearLayoutManager(this)
-        binding.mainRecyclerView.layoutManager=layoutManager
-        adapter=MyAdapter(datas)
-        binding.mainRecyclerView.adapter=adapter
+        binding.mainRecyclerView.layoutManager = layoutManager
+        adapter = MyAdapter(datas)
+        binding.mainRecyclerView.adapter = adapter
         binding.mainRecyclerView.addItemDecoration(
             DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         )
@@ -58,5 +59,5 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState.putStringArrayList("datas", ArrayList(datas))
     }
-    
+
 }

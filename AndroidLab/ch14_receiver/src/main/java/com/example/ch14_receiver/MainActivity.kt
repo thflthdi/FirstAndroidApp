@@ -15,9 +15,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))!!.apply {
-            when (getIntExtra(BatteryManager.EXTRA_STATUS, -1)){
+            when (getIntExtra(BatteryManager.EXTRA_STATUS, -1)) {
                 BatteryManager.BATTERY_STATUS_CHARGING -> {
-                    when (getIntExtra(BatteryManager.EXTRA_PLUGGED, -1)){
+                    when (getIntExtra(BatteryManager.EXTRA_PLUGGED, -1)) {
                         // 배터리 저속 충전모드
                         BatteryManager.BATTERY_PLUGGED_USB -> {
                             binding.chargingResultView.text = "USB Plugged"

@@ -11,7 +11,7 @@ class AddActivity : AppCompatActivity() {
     lateinit var binding: ActivityAddBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityAddBinding.inflate(layoutInflater)
+        binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 
@@ -22,7 +22,7 @@ class AddActivity : AppCompatActivity() {
         // 1. xml 메뉴를 액티비티 코드에 적용
         menuInflater.inflate(R.menu.menu_add, menu)
         // 2. add()를 이용하여 menu객체에 메뉴 추가
-        val menuItem2: MenuItem? = menu?.add(0,1,0,"menu2")
+        val menuItem2: MenuItem? = menu?.add(0, 1, 0, "menu2")
         return super.onCreateOptionsMenu(menu)
     }
 
