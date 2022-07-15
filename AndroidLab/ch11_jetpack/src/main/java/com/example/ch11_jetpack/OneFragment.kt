@@ -1,17 +1,9 @@
 package com.example.ch11_jetpack
 
-import android.content.Context
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Rect
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -51,46 +43,46 @@ class MyAdapter(val datas: MutableList<String>) :
 }
 
 // 리사이클러 뷰 꾸미기
-class MyDecoration(val context: Context) : RecyclerView.ItemDecoration() {
-    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        super.onDrawOver(c, parent, state)
-        // 뷰 크기 계산
-        val width = parent.width
-        val height = parent.height
-        // image 크기 계산
-        val dr: Drawable? =
-            ResourcesCompat.getDrawable(context.getResources(), R.drawable.kbo, null)
-        val drWidth = dr?.intrinsicWidth
-        val drHeight = dr?.intrinsicHeight
-        //이미지 출력 위치 계산
-        val left = width / 2 - drWidth?.div(2) as Int
-        val top = height / 2 - drHeight?.div(2) as Int
-        //이미지 출력
-        c.drawBitmap(
-            BitmapFactory.decodeResource(context.getResources(), R.drawable.kbo),
-            left.toFloat(),
-            top.toFloat(),
-            null
-        )
-    }
-
-    override fun getItemOffsets(
-        outRect: Rect,
-        view: View,
-        parent: RecyclerView,
-        state: RecyclerView.State
-    ) {
-        super.getItemOffsets(outRect, view, parent, state)
-        val index = parent.getChildAdapterPosition(view) + 1
-
-        if (index % 3 == 0)
-            outRect.set(10, 10, 10, 60)
-        else
-            outRect.set(10, 10, 10, 0)
-        view.setBackgroundColor(Color.parseColor("#28A0FF"))
-        ViewCompat.setElevation(view, 20.0f)
-    }
-}
+//class MyDecoration(val context: Context) : RecyclerView.ItemDecoration() {
+//    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+//        super.onDrawOver(c, parent, state)
+//        // 뷰 크기 계산
+//        val width = parent.width
+//        val height = parent.height
+//        // image 크기 계산
+//        val dr: Drawable? =
+//            ResourcesCompat.getDrawable(context.getResources(), R.drawable.kbo, null)
+//        val drWidth = dr?.intrinsicWidth
+//        val drHeight = dr?.intrinsicHeight
+//        //이미지 출력 위치 계산
+//        val left = width / 2 - drWidth?.div(2) as Int
+//        val top = height / 2 - drHeight?.div(2) as Int
+//        //이미지 출력
+//        c.drawBitmap(
+//            BitmapFactory.decodeResource(context.getResources(), R.drawable.kbo),
+//            left.toFloat(),
+//            top.toFloat(),
+//            null
+//        )
+//    }
+//
+//    override fun getItemOffsets(
+//        outRect: Rect,
+//        view: View,
+//        parent: RecyclerView,
+//        state: RecyclerView.State
+//    ) {
+//        super.getItemOffsets(outRect, view, parent, state)
+//        val index = parent.getChildAdapterPosition(view) + 1
+//
+//        if (index % 3 == 0)
+//            outRect.set(10, 10, 10, 60)
+//        else
+//            outRect.set(10, 10, 10, 0)
+//        view.setBackgroundColor(Color.parseColor("#28A0FF"))
+//        ViewCompat.setElevation(view, 20.0f)
+//    }
+//}
 
 class OneFragment : Fragment() {
 
@@ -109,7 +101,7 @@ class OneFragment : Fragment() {
         binding.recyclerView.layoutManager = layoutManager
         val adapter = MyAdapter(datas)
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.addItemDecoration(MyDecoration(activity as Context))
+//        binding.recyclerView.addItemDecoration(MyDecoration(activity as Context))
         return binding.root
     }
 
