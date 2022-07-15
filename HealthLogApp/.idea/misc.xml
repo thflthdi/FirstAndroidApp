@@ -3,7 +3,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2762954711914062" />
+        <entry key="../../../../../layout/custom_preview.xml" value="0.4161458333333333" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/button.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/calendar_active_circle.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/calendar_no_active_circle.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/ic_tab_anal.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/ic_tab_home.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/ic_tab_plan.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/ic_tab_plus.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/ic_tap_anal.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/ic_tap_home.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/pannel.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/tab_home.xml" value="0.284" />
+        <entry key="app/src/main/res/font/pretendard.xml" value="0.43385416666666665" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.36395009358723956" />
+        <entry key="app/src/main/res/layout/bottom_tap_layout.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/calendar_recycleview.xml" value="0.29518686930338545" />
+        <entry key="app/src/main/res/layout/custom_tab_item.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.28271230061848956" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/home_layout.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/main_pannel_layout.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/month_calendar_layout.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/toolbar_layout.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>
