@@ -22,8 +22,10 @@
         <entry key="app/src/main/res/layout/bottom_tap_layout.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/calendar_recycleview.xml" value="0.29518686930338545" />
         <entry key="app/src/main/res/layout/custom_tab_item.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_analysis.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.28271230061848956" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_plan.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/home_layout.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/main_pannel_layout.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/month_calendar_layout.xml" value="0.4036458333333333" />

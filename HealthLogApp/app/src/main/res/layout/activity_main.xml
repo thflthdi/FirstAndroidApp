@@ -9,11 +9,12 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/tab_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"/>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@+id/tabs"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
