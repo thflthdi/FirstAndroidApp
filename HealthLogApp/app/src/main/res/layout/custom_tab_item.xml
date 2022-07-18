@@ -5,6 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:paddingTop="0dp"
+    android:paddingBottom="1dp"
     android:id="@+id/tab_layout">
 
     <ImageView
@@ -12,7 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_tab_home" />
+        android:src="@drawable/ic_tab_home"
+        app:tint="@color/tab_select_color"
+        />
     <TextView
         android:id="@+id/tab_text"
         style="@style/Text.TabStyle"
