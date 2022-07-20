@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout" />
@@ -13,20 +14,21 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/tabs"
         android:layout_below="@id/toolbar"
-        android:layout_above="@+id/tabs"/>
+        android:orientation="horizontal" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/white"
         android:layout_alignParentBottom="true"
+        android:background="@color/white"
         app:tabGravity="fill"
-        app:tabSelectedTextColor="@color/app_black"
         app:tabIndicatorColor="@color/white"
         app:tabMode="fixed"
-        app:tabRippleColor="@android:color/transparent">
+        app:tabRippleColor="@android:color/transparent"
+        app:tabSelectedTextColor="@color/app_black">
 
     </com.google.android.material.tabs.TabLayout>
 
