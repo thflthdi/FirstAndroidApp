@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.adapter.FragmentViewHolder
 import com.example.mysimplehealthlog.databinding.FragmentHomeBinding
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
@@ -30,6 +31,11 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = FragmentHomeBinding.inflate(layoutInflater)
         val calendar = binding.calendarView
+
+
+        binding.exerciseButton.setOnClickListener {
+            (activity as MainActivity).replaceFragment(ExerciseFragment())
+        }
 
         calendar.setSelectedDate(CalendarDay.today())
         val dayList = mutableListOf<CalendarDay>()

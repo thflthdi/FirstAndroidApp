@@ -1,42 +1,22 @@
 package com.example.mysimplehealthlog
 
-import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.mysimplehealthlog.databinding.ActivityMainBinding
 import com.example.mysimplehealthlog.databinding.CustomTabItemBinding
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 
 class MainActivity : AppCompatActivity() {
-
-    class FragmentPagerAdapter(activity: FragmentActivity) :
-        FragmentStateAdapter(activity) {
-        val fragments: List<Fragment>
-
-        init {
-            fragments = listOf(HomeFragment(), AnalysisFragment(), PlanFragment(), PlusFragment())
-        }
-
-        override fun getItemCount(): Int = fragments.size
-
-        override fun createFragment(position: Int): Fragment = fragments[position]
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Tab 생성
         val tabLayout = binding.tabs
         val tab_home: TabLayout.Tab = binding.tabs.newTab()
         tab_home.setCustomView(matchTabIcon("홈"))
@@ -51,24 +31,49 @@ class MainActivity : AppCompatActivity() {
         tab_plus.setCustomView(matchTabIcon("더보기"))
         tabLayout.addTab(tab_plus)
 
-        val adapter = FragmentPagerAdapter(this)
-        binding.viewPager.adapter = adapter
-        binding.viewPager.isUserInputEnabled = false
-        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
-            when (position) {
-                0 -> tab.setCustomView(matchTabIcon("홈"))
-                1 -> {
-                    tab.setCustomView(matchTabIcon("통계"))
-                    Log.d("test", "when")
+        // TODO("탭 선택 후 프레임 늦게 뜸")
+        //fragment
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_frame, HomeFragment()).commit()
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                val transaction = supportFragmentManager.beginTransaction()
+
+                when (tab?.position) {
+                    0 -> transaction.replace(R.id.main_frame, HomeFragment())
+                    1 -> transaction.replace(R.id.main_frame, AnalysisFragment())
+                    2 -> transaction.replace(R.id.main_frame, PlanFragment())
+                    3 -> transaction.replace(R.id.main_frame, PlusFragment())
                 }
-                2 -> tab.setCustomView(matchTabIcon("플랜"))
-                3 -> tab.setCustomView(matchTabIcon("더보기"))
+                transaction.commit()
             }
-        }.attach()
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val transaction = supportFragmentManager.beginTransaction()
+                when (tab?.position) {
+                    0 -> transaction.replace(R.id.main_frame, HomeFragment())
+                    1 -> transaction.replace(R.id.main_frame, AnalysisFragment())
+                    2 -> transaction.replace(R.id.main_frame, PlanFragment())
+                    3 -> transaction.replace(R.id.main_frame, PlusFragment())
+                }
+                transaction.commit()
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+        })
 
     }
 
-    private fun matchTabIcon(tabName: String, isSelected: Boolean = false): View {
+    // fragment에서 activity를 호출하여 페이지 제어
+    fun replaceFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_frame, fragment).commit()
+    }
+
+    //custom_tab_item 아이콘을 text에 따라 변환
+    private fun matchTabIcon(tabName: String): View {
         val tabView = CustomTabItemBinding.inflate(layoutInflater)
         tabView.tabText.text = tabName
         when (tabName) {
@@ -88,15 +93,8 @@ class MainActivity : AppCompatActivity() {
                 tabView.tabIc.setImageResource(R.drawable.ic_tab_home)
             }
         }
-        if (isSelected) {
-            Log.d("test", "${isSelected}")
-            tabView.tabIc.setImageResource(R.drawable.ic_tab_home)
-            tabView.tabText.setTextColor(Color.BLACK)
-        }
         return tabView.tabLayout
-
     }
-
 
 }
 

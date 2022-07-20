@@ -10,13 +10,12 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
+    <FrameLayout
+        android:id="@+id/main_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/tabs"
-        android:layout_below="@id/toolbar"
-        android:orientation="horizontal" />
+        android:layout_below="@id/toolbar" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -28,8 +27,6 @@
         app:tabIndicatorColor="@color/white"
         app:tabMode="fixed"
         app:tabRippleColor="@android:color/transparent"
-        app:tabSelectedTextColor="@color/app_black">
-
-    </com.google.android.material.tabs.TabLayout>
+        app:tabSelectedTextColor="@color/app_black" />
 
 </RelativeLayout>

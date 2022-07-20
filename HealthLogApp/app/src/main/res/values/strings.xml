@@ -2,4 +2,11 @@
     <string name="app_name">Anabolic</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="analysis_shift"><![CDATA[통계 >]]></string>
+    <string name="squat">스쿼트</string>
+    <string name="analysis_none_data">최소 일주일 운동 데이터가 필요합니다</string>
+    <string name="exercise_shift"><![CDATA[운동 기록 >]]></string>
+    <string name="exercise_none_data">오늘의 운동 기록이 없어요</string>
+    <string name="exercise_log_btn">+운동 기록하기</string>
+    <string name="month_calendar">월별 운동 기록</string>
 </resources>

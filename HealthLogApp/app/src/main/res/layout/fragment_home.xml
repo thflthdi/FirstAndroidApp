@@ -1,119 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/main_statistics_pannel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/pannel"
-        android:orientation="vertical"
-        android:padding="15dp"
-        tools:context=".HomeActivity">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/statistics_title"
-            style="@style/Text.TitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:text="통계 >"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/exercise_name"
-            style="@style/Text.TitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingTop="5dp"
-            android:text="스쿼트"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/empty_text"
-            style="@style/Text.BoldGrayStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingTop="5dp"
-            android:text="최소 일주일 운동 데이터가 필요합니다"
-            android:textSize="15sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/main_statistics_pannel2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/pannel"
-        android:orientation="vertical"
-        android:padding="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/main_statistics_pannel">
-
-        <TextView
-            android:id="@+id/exercise_title"
-            style="@style/Text.TitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="운동 기록 >"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/empty_exercise_text"
-            style="@style/Text.LightGrayStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="오늘의 운동 기록이 없어요"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/exercise_button"
-            style="@style/Text.ButtonStyle"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:background="@drawable/button"
-            android:text="+운동 기록하기"
-            android:textSize="15dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/main_statistics_pannel3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/pannel"
-        android:orientation="vertical"
-        android:padding="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/main_statistics_pannel2">
-
-        <TextView
-            style="@style/Text.TitleStyle"
+        <LinearLayout
+            android:id="@+id/main_statistics_panel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="월별 운동 기록"
-            android:textSize="18sp" />
+            android:background="@drawable/panel"
+            android:orientation="vertical"
+            android:padding="15dp"
+            tools:context=".HomeActivity">
 
+            <TextView
+                android:id="@+id/statistics_title"
+                style="@style/Text.TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:text="@string/analysis_shift"
+                android:textSize="18sp" />
 
-        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-            android:id="@+id/calendarView"
+            <TextView
+                android:id="@+id/exercise_name"
+                style="@style/Text.TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="@string/squat"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/empty_text"
+                style="@style/Text.BoldGrayStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="@string/analysis_none_data"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_statistics_panel2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:mcv_selectionColor="@color/main_color"
-            app:mcv_showOtherDates="all" />
-    </LinearLayout>
+            android:layout_marginTop="15dp"
+            android:background="@drawable/panel"
+            android:orientation="vertical"
+            android:padding="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/main_statistics_panel">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/exercise_title"
+                style="@style/Text.TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exercise_shift"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/empty_exercise_text"
+                style="@style/Text.LightGrayStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/exercise_none_data"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/exercise_button"
+                style="@style/Text.ButtonStyle"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button"
+                android:text="@string/exercise_log_btn"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_statistics_panel3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/panel"
+            android:orientation="vertical"
+            android:padding="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/main_statistics_panel2">
+
+            <TextView
+                style="@style/Text.TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/month_calendar"
+                android:textSize="18sp" />
+
+
+            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mcv_selectionColor="@color/main_color"
+                app:mcv_showOtherDates="all" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
