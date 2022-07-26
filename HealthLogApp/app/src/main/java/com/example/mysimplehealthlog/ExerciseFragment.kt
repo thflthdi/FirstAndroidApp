@@ -5,55 +5,41 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.mysimplehealthlog.databinding.FragmentExerciseBinding
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.DayViewDecorator
+import com.prolificinteractive.materialcalendarview.DayViewFacade
+import com.prolificinteractive.materialcalendarview.spans.DotSpan
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+// calendar setting
+class WeekCalendarSetting(actionDay: Collection<CalendarDay>) : DayViewDecorator {
+    var actionDay: HashSet<CalendarDay> = HashSet(actionDay)
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ExerciseFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ExerciseFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun shouldDecorate(day: CalendarDay): Boolean {
+        return actionDay.contains(day)
     }
 
+    override fun decorate(view: DayViewFacade?) {
+        view?.addSpan(DotSpan(R.color.main_color))
+    }
+}
+
+class ExerciseFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_exercise, container, false)
-    }
+        val binding = FragmentExerciseBinding.inflate(layoutInflater)
+        val calendar = binding.calendarView
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ExerciseFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ExerciseFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        calendar.setSelectedDate(CalendarDay.today())
+        calendar.topbarVisible = false
+        val dayList = mutableListOf<CalendarDay>()
+        for (active in 1..15) {
+            dayList.add(CalendarDay.from(2022, 7, active))
+        }
+        calendar.addDecorator(WeekCalendarSetting(dayList))
+        return binding.root
     }
 }

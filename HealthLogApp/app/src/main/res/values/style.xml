@@ -34,7 +34,9 @@
         <item name="android:fontFamily">@font/pretendard_bold</item>
         <item name="android:textColor">@color/light_gray</item>
     </style>
-
+    <style name="calendar_day_style" parent="Text.LightGrayStyle">
+        <item name="android:textSize">11dp</item>
+    </style>
     <style name="Text.ButtonStyle" parent="android:TextAppearance">
         <item name="android:textStyle">normal</item>
         <item name="android:includeFontPadding">false</item>

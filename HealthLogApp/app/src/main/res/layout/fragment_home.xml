@@ -12,6 +12,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_layout" />
+
         <LinearLayout
             android:id="@+id/main_statistics_panel"
             android:layout_width="match_parent"
