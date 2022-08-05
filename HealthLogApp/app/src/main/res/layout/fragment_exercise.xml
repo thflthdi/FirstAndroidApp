@@ -5,9 +5,11 @@
     android:id="@+id/exercise_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ExerciseFragment">
 
     <LinearLayout
+        android:id="@+id/exercise_linear"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -17,27 +19,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
+
             <TextView
+                style="@style/Text.TitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.1"
-                style="@style/Text.TitleStyle"
                 android:text="@string/back_text" />
+
             <TextView
+                style="@style/Text.TitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                style="@style/Text.TitleStyle"
                 android:text="오늘 운동 기록" />
+
             <TextView
+                style="@style/Text.BoldGrayStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                style="@style/Text.BoldGrayStyle"
                 android:text="저장" />
         </LinearLayout>
 
@@ -66,14 +71,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:padding="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="5dp"
             android:text="7월 21일"
             android:textSize="13sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exercise_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

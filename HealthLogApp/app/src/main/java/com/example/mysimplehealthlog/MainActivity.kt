@@ -67,10 +67,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     // fragment에서 activity를 호출하여 페이지 제어
-    fun replaceFragment(fragment: Fragment) {
+    fun replaceFragment(fragment: Fragment, isCommit: Boolean = true) {
         val transaction = supportFragmentManager.beginTransaction()
-        R.id.toolbar
-        transaction.replace(R.id.main_frame, fragment).commit()
+        if (isCommit) {
+            transaction.replace(R.id.main_frame, fragment).commit()
+        } else {
+            transaction.replace(R.id.main_frame, fragment)
+        }
     }
 
     //custom_tab_item 아이콘을 text에 따라 변환
