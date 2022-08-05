@@ -1,15 +1,12 @@
 package com.example.mysimplehealthlog
 
+import android.app.AlertDialog
 import android.content.Context
-import android.content.res.AssetManager
-import kotlinx.android.synthetic.main.activity_main.*
+import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,19 +60,20 @@ class SetAdapter(val context: Context, val datas: JSONArray) :
         val binding = (holder as SetViewHolder).binding
         val data = datas.getJSONObject(position)
         binding.setExerciseName.text = data.getString("name")
-        binding.setTotalCtn.text = "total ${data.getString("total")} set"
 
         // recycle -add
         binding.setRecycle.layoutManager = LinearLayoutManager(context)
-        val add_datas = mutableListOf<Int>()
+
+        // TODO: 더미 데이터임 변경
+        var add_datas = mutableListOf<Int>()
         for (i in 1..4) {
             add_datas.add(10)
         }
+        binding.setTotalCtn.text = "total ${add_datas.size} set"
 
         binding.setPlusBtn.setOnClickListener {
             add_datas.add(10)
-            Log.d("test", "click - $datas")
-
+            binding.setTotalCtn.text = "total ${add_datas.size} set"
             binding.setRecycle.adapter = AddAdapter(context, add_datas)
         }
 
@@ -115,13 +113,12 @@ class AddAdapter(val context: Context, val datas: MutableList<Int>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as AddViewHolder).binding
-        binding.ctnEdittext.hint = "${datas[position]}"
+        binding.ctnEdittext.setText("${datas[position]}")
+
         binding.setCtn.text = "${position + 1} Set"
 
         binding.delSetBtn.setOnClickListener {
             if (datas.size > 1) {
-                Log.d("test", "${position}")
-
                 datas.removeAt(position)
                 notifyDataSetChanged()
             } else {
@@ -130,13 +127,24 @@ class AddAdapter(val context: Context, val datas: MutableList<Int>) :
                     .show()
             }
         }
+
+        // TODO: 소프트키보드가 down 됐을때도 고려
+        binding.ctnEdittext.setOnEditorActionListener { textView, i, keyEvent ->
+            var handled = false
+            if (i === EditorInfo.IME_ACTION_NEXT) {
+                val str: String = textView.text.toString()
+                datas[position] = str.toInt()
+            }
+            handled
+        }
+
         binding.minusCtnBtn.setOnClickListener {
-            binding.ctnEdittext.hint = "${datas[position] - 1}"
+            binding.ctnEdittext.setText("${datas[position] - 1}")
             datas[position]--
         }
 
         binding.plusCtnBtn.setOnClickListener {
-            binding.ctnEdittext.hint = "${datas[position] + 1}"
+            binding.ctnEdittext.setText("${datas[position] + 1}")
             datas[position]++
         }
 
@@ -150,8 +158,9 @@ class ExerciseFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentExerciseBinding.inflate(layoutInflater)
-        val calendar = binding.calendarView
 
+        // calendar
+        val calendar = binding.calendarView
         calendar.setSelectedDate(CalendarDay.today())
         calendar.topbarVisible = false
         val dayList = mutableListOf<CalendarDay>()
@@ -159,6 +168,39 @@ class ExerciseFragment : Fragment() {
             dayList.add(CalendarDay.from(2022, 7, active))
         }
         calendar.addDecorator(WeekCalendarSetting(dayList))
+
+        var isSubmit = false
+        val eventHandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if (p1 == DialogInterface.BUTTON_POSITIVE) {
+                    (activity as MainActivity).replaceFragment(HomeFragment())
+                } else if (p1 == DialogInterface.BUTTON_NEGATIVE) {
+                    (activity as MainActivity).replaceFragment(HomeFragment())
+                }
+            }
+        }
+        // back btn
+        binding.exerciseBackBtn.setOnClickListener {
+            if (!isSubmit) {
+                AlertDialog.Builder(context).run {
+                    setTitle("아직 저장되지 않았습니다")
+                    setMessage("저장하고 이전 페이지로 돌아갈까요?")
+                    setPositiveButton("OK", eventHandler)
+                    setNegativeButton("NO", eventHandler)
+                    show()
+                }
+            } else {
+                (activity as MainActivity).replaceFragment(HomeFragment())
+            }
+        }
+
+        // submit btn
+        binding.exerciseSubmit.setOnClickListener {
+            // TODO
+            isSubmit = true
+            Snackbar.make(binding.exerciseLinear, "저장 되었습니다", Snackbar.LENGTH_SHORT)
+                .show()
+        }
 
         // recycle -set
         val assetManager = resources.assets

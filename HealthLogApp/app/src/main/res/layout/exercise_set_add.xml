@@ -42,6 +42,7 @@
         android:layout_weight="0"
         android:background="@drawable/edittext_rounded"
         android:hint="12"
+        android:text="12"
         android:textAlignment="center"
         android:inputType="number" />
 
