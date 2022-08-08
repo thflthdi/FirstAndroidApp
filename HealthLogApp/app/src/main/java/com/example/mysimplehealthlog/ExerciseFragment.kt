@@ -1,8 +1,11 @@
 package com.example.mysimplehealthlog
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -10,6 +13,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mysimplehealthlog.databinding.DialogLayoutBinding
 import com.example.mysimplehealthlog.databinding.ExerciseSetAddBinding
 import com.example.mysimplehealthlog.databinding.ExerciseSetRecycleBinding
 import com.example.mysimplehealthlog.databinding.FragmentExerciseBinding
@@ -179,19 +183,34 @@ class ExerciseFragment : Fragment() {
                 }
             }
         }
+
+        // alertdialog
+        val alertdialog_b = AlertDialog.Builder(context)
+        val alertdialog_c = alertdialog_b.create()
+        val dialog_binding = DialogLayoutBinding.inflate(layoutInflater)
+
         // back btn
         binding.exerciseBackBtn.setOnClickListener {
             if (!isSubmit) {
-                AlertDialog.Builder(context).run {
-                    setTitle("아직 저장되지 않았습니다")
-                    setMessage("저장하고 이전 페이지로 돌아갈까요?")
-                    setPositiveButton("OK", eventHandler)
-                    setNegativeButton("NO", eventHandler)
+                // TODO: backgournd corner rounded
+                alertdialog_c.run {
+                    setView(dialog_binding.root)
                     show()
                 }
             } else {
                 (activity as MainActivity).replaceFragment(HomeFragment())
             }
+        }
+
+        // alertdialog - cancel
+        dialog_binding.dialogCancelBtn.setOnClickListener {
+            (activity as MainActivity).replaceFragment(HomeFragment())
+            alertdialog_c.dismiss()
+        }
+        // alertdialog - submit
+        dialog_binding.dialogSubmitBtn.setOnClickListener {
+            (activity as MainActivity).replaceFragment(HomeFragment())
+            alertdialog_c.dismiss()
         }
 
         // submit btn
