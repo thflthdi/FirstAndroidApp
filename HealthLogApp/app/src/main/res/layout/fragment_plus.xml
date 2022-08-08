@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PlusFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout" />
+
+    <LinearLayout
+        android:id="@+id/plus_information_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/panel"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="7dp">
+
+        <TextView
+            style="@style/Text.TitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="7dp"
+            android:text="이용 안내"
+            android:textSize="15sp" />
+
+        <TextView
+            style="@style/Text.BoldGrayStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="고객센터"
+            android:textSize="13sp" />
+
+        <TextView
+            style="@style/Text.BoldGrayStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="통합 개인정보처리방침"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/plus_account_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/panel"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="7dp">
+
+        <TextView
+            style="@style/Text.TitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="7dp"
+            android:text="계정 관리"
+            android:textSize="15sp" />
+
+        <TextView
+            style="@style/Text.BoldGrayStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="로그아웃"
+            android:textSize="13sp" />
+
+        <TextView
+            style="@style/Text.BoldGrayStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="회원 탈퇴"
+            android:textSize="13sp" />
+    </LinearLayout>
+
     <TextView
+        android:padding="20dp"
+        android:id="@+id/version_text"
+        style="@style/Text.LightGrayStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="plus" />
-
-</FrameLayout>
+        android:gravity="bottom|center"
+        android:text="v 1.0"
+        android:textSize="11sp" />
+</LinearLayout>
