@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "emoji": "\uD83E\uDDB5",
+      "name": "스쿼트",
+      "total": "5",
+      "aver" : "12"
+    },
+    {
+      "emoji": "\uD83E\uDDBF",
+      "name": "런지",
+      "total": "3",
+      "aver" : "12"
+    },
+    {
+      "emoji": "\uD83C\uDFCB\uD83C\uDFFB",
+      "name": "윗몸일으키기",
+      "total": "8",
+      "aver" : "12"
+    }
+  ]
+}

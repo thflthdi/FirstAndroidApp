@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/emoji_text"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/emoji_bg_rounded"
+        android:gravity="center"
+        android:text="\uD83D\uDE10"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/today_exercise_title"
+        android:layout_toRightOf="@+id/emoji_text"
+        style="@style/Text.TitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="스쿼트"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/today_total_info"
+        android:layout_toRightOf="@id/emoji_text"
+        android:layout_alignBottom="@+id/emoji_text"
+        style="@style/Text.BoldGrayStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="총 5세트 | 평균 12회"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:textSize="12sp" />
+</RelativeLayout>

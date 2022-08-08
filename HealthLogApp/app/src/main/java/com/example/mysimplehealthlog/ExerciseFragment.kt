@@ -173,16 +173,6 @@ class ExerciseFragment : Fragment() {
         }
         calendar.addDecorator(WeekCalendarSetting(dayList))
 
-        var isSubmit = false
-        val eventHandler = object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                if (p1 == DialogInterface.BUTTON_POSITIVE) {
-                    (activity as MainActivity).replaceFragment(HomeFragment())
-                } else if (p1 == DialogInterface.BUTTON_NEGATIVE) {
-                    (activity as MainActivity).replaceFragment(HomeFragment())
-                }
-            }
-        }
 
         // alertdialog
         val alertdialog_b = AlertDialog.Builder(context)
@@ -190,6 +180,7 @@ class ExerciseFragment : Fragment() {
         val dialog_binding = DialogLayoutBinding.inflate(layoutInflater)
 
         // back btn
+        var isSubmit = false
         binding.exerciseBackBtn.setOnClickListener {
             if (!isSubmit) {
                 // TODO: backgournd corner rounded
